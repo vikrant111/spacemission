@@ -35,9 +35,13 @@ return new Promise((resolve, reject)=>{
 }
 
 
+function getAllPlanet(){
+  return habitablePlanets;
+}
+
 
 
   module.exports = {
-    loadPlanetsData,
-    planets:habitablePlanets,
+    loadPlanetsData:loadPlanetsData,
+    getAllPlanet:getAllPlanet
   }
