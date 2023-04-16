@@ -1,5 +1,4 @@
-const BASE_URL = "http://localhost:5000";
-
+const BASE_URL = "http://localhost:8000";
 
 
 
@@ -10,19 +9,46 @@ async function httpGetPlanets() {
 }
 
 async function httpGetLaunches() {
-  // TODO: Once API is ready.
-  // Load launches, sort by flight number, and return as JSON.
+  const response = await fetch(`${BASE_URL}/launches`,{method:"get"});
+  const fetchedLaunches = await response.json();
+  return fetchedLaunches.sort((a,b)=>{
+   return a.flightNumber-b.flightNumber
+  })
 }
 
 async function httpSubmitLaunch(launch) {
-  // TODO: Once API is ready.
-  // Submit given launch data to launch system.
+  try{
+    console.log("launch",launch)
+    return await fetch(`${BASE_URL}/launches`,{
+      method:"post",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body:JSON.stringify(launch)
+    });
+  }catch(err){
+    console.log("launcherr",err)
+    return {
+      ok:false,
+    };
+  }
+
 }
 
 async function httpAbortLaunch(id) {
-  // TODO: Once API is ready.
-  // Delete launch with given ID.
+  try{
+    return await fetch(`${BASE_URL}/launches/${id}`,{
+      method:"delete",
+    })
+  }catch(err){
+    console.log("aborterr",err)
+    return {
+      ok:false,
+    };
+  }
 }
+
+
 
 export {
   httpGetPlanets,

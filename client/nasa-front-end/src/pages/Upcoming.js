@@ -40,6 +40,7 @@ const Upcoming = props => {
           <td>{new Date(launch.launchDate).toDateString()}</td>
           <td>{launch.mission}</td>
           <td>{launch.rocket}</td>
+          {/* <td>{launch.customers?.join(",")}</td> */}
           <td>{launch.target}</td>
         </tr>;
       });
@@ -57,7 +58,8 @@ const Upcoming = props => {
             <th style={{width: "10rem"}}>Date</th>
             <th style={{width: "11rem"}}>Mission</th>
             <th style={{width: "11rem"}}>Rocket</th>
-            <th>Destination</th>
+            {/* <th style={{width: "11rem"}}>Customers</th> */}
+            <th style={{width: "11rem"}}>Destination</th>
           </tr>
         </thead>
         <tbody>
