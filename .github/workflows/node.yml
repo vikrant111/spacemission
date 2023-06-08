@@ -10,6 +10,11 @@ on:
 
 jobs:
   build:
+    env:
+      CI: true
+    strategy:
+      matrix:
+        node-version: [14.x, 16.x]
     runs-on: ${{ matrix.os }}
 
     strategy:
@@ -20,10 +25,10 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
-      - name: Use Node.js version 16
+      - name: Use Node.js version ${{matrix.node-version}}
         uses: actions/setup-node@v2
         with:
-          node-version: '16'
+          node-version: ${{matrix.node-version}}
 
       - name: Install Dependencies
         run: npm install
