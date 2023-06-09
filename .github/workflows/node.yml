@@ -39,4 +39,6 @@ jobs:
 
       - name: Build
         run: npm run build --prefix client/nasa-front-end
-        # run: npm test
+
+      - name: Run Tests
+        run: npm test
