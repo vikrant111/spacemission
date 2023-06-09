@@ -27,8 +27,8 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
 
-      - name: Install Dependencies
-        run: npm install
+      - name: Install FE Dependencies
+        run: npm install --prefix client/nasa-front-end
 
       - name: Build
         run: npm run build --prefix client/nasa-front-end
