@@ -16,7 +16,7 @@ jobs:
     strategy:
       matrix:
         node-version: [14.x, 16.x]
-        mongodb-version: ['4.4']
+        # mongodb-version: ['4.4']
         os: [windows-latest, ubuntu-latest, macos-latest]
     runs-on: ${{ matrix.os }}
 
@@ -24,10 +24,10 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
-      - name: MongoDB in GitHub Actions
-        uses: supercharge/mongodb-github-action@1.9.0
-        with:
-          mongodb-version: ${{ matrix.mongodb-version }}
+      # - name: MongoDB in GitHub Actions
+      #   uses: supercharge/mongodb-github-action@1.9.0
+      #   with:
+      #     mongodb-version: ${{ matrix.mongodb-version }}
 
       - name: Use Node.js version ${{ matrix.node-version }}
         uses: actions/setup-node@v2
