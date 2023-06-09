@@ -16,18 +16,17 @@ jobs:
     strategy:
       matrix:
         node-version: [14.x, 16.x]
-        mongodb-version: ['4.4']
-        os: [windows-latest, ubuntu-latest, macos-latest]
+        os: [ubuntu-latest, macos-latest, windows-latest]
     runs-on: ${{ matrix.os }}
 
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
 
-      - name: MongoDB in GitHub Actions
-        uses: supercharge/mongodb-github-action@1.9.0
-        with:
-          node-version: ${{ matrix.mongodb-version }}
+      - name: Set up MongoDB
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y mongodb
 
       - name: Use Node.js version ${{ matrix.node-version }}
         uses: actions/setup-node@v2
@@ -39,6 +38,8 @@ jobs:
 
       - name: Build
         run: npm run build --prefix client/nasa-front-end
+        # Add additional build steps as needed
 
       - name: Run Tests
         run: npm test
+        # Add additional test steps as needed
