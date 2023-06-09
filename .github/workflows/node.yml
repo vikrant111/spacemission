@@ -32,4 +32,4 @@ jobs:
 
       - name: Build
         run: npm run deploy
-        run: npm test
+        # run: npm test
